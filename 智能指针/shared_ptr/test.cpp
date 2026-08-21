@@ -25,7 +25,7 @@ int main() {
     cout << *ptr1 << endl;
 
     //指定共享指针的删除器
-    shared_ptr<int>ptr5(new int(1), [](int* p) {delete p;});//也可指定普通函数
+    shared_ptr<int>ptr5(new int(1), [](int* p) {delete p;});//也可指定普通函数（本质lambda）
     //在C++11中使用shared_ptr管理动态数组时，需要指定删除器，因为std::shared_ptr的默认删除器不支持数组对象
     shared_ptr<int>ptr6(new int[5], [](int* p) {delete[]p;});
     //在删除数组内存时，除了自己编写删除器，也可以使用C++提供的std::default_delete<T>()函数作为删除器，这个函数内部的删除功能也是通过调用delete来实现的
