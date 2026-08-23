@@ -8,7 +8,7 @@ public:
     test(int num) :ptr(new int(num)) {};
     //拷贝构造函数
     test(const test& t) :ptr(new int(*t.ptr)) {};
-    //移动构造函数，浅拷贝
+    //移动构造函数，浅拷贝，针对于即将被析构的变量
     test(test&& t) :ptr(t.ptr) {
         t.ptr = nullptr;
     };

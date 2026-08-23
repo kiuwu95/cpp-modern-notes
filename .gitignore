@@ -1,4 +1,6 @@
 ﻿.vscode/tasks.json
+.vscode/launch.json
+.vscode/c_cpp_properties.json
 # 编译产物
 *.exe
 *.obj
