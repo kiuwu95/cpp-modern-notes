@@ -16,10 +16,11 @@ int main() {
     //因为after和before是来自于steady_clock的时间点，所以它们的时间间隔自然也就来自steady_clock的<long long,nanoseconds>
     //chrono::duration<long long,milli>dur非法，因为这属于精度丢失的转换，小数点后面的数会被砍掉，精度变低
     chrono::duration<double, milli> dur = after - before;//合法，double使得小数点后的数字依旧保留了下来，精度不变
+    cout << dur.count() << endl;
     //必须使用显式转换，告诉编译器确定要截断精度
     chrono::duration<long long, milli>dur2 = chrono::duration_cast<chrono::duration<long long, milli>>(after - before);
-    chrono::milliseconds dur2 = chrono::duration_cast<chrono::milliseconds>(after - before);//与上面等价
-
+    //chrono::milliseconds dur2 = chrono::duration_cast<chrono::milliseconds>(after - before);与上面等价
+    cout << dur2.count() << endl;
     //对于隐式转化，只有低精度转化为高精度可用，比如秒->毫秒
     chrono::seconds s(1);
     chrono::milliseconds ms = s;

@@ -10,7 +10,7 @@ int main() {
     cout << "当前时间：" << ctime(&currenttime_t);//c语言api
 
     cout << "在system_clock上距离1970-01-01的时间间隔： ";
-    cout << currenttime.time_since_epoch().count() << endl;//距离1970-01-01的时间间隔
+    cout << currenttime.time_since_epoch().count() << endl;//距离1970-01-01的时间间隔，以100纳秒为一个时间单位
 
     tm* lt = localtime(&currenttime_t);//一个当前时间的结构体指针
     cout << "当前时间：";
@@ -18,7 +18,7 @@ int main() {
 
     //steady_clock用法（来自CPU时钟）
     cout << "在steady_clock上距离1970-01-01的时间间隔： ";
-    cout << chrono::steady_clock::now().time_since_epoch().count() << endl;//距离1970-01-01的时间间隔
+    cout << chrono::steady_clock::now().time_since_epoch().count() << endl;//距离1970-01-01的时间间隔，以1纳秒为一个时间单位
 
     auto before = chrono::steady_clock::now();
     this_thread::sleep_for(chrono::seconds(1));//睡眠1s
@@ -29,7 +29,7 @@ int main() {
     chrono::duration<double, milli> dur1 = after - before;//milli千分之一单位制
     cout << dur1.count() << endl;
 
-    //high_resolution_clock的用法（代表了当前系统时间所支持的最高精度，它可能就是steady_clock或system_clock）
+    //high_resolution_clock的用法（代表了当前系统时间所支持的最高精度，它可能就是steady_clock或system_clock，在这里就是steady_clock）
     cout << "在high_resolution_clock上距离1970-01-01的时间间隔： ";
     cout << chrono::high_resolution_clock::now().time_since_epoch().count() << endl;//距离1970-01-01的时间间隔
 

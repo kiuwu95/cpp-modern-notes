@@ -17,7 +17,7 @@ int main() {
     chrono::duration<double, milli> dur = after - before;
     cout << dur.count() << endl;
 
-    //每隔60ms运行
+    //data()每隔60ms运行
     // while (1) {
     //     auto tn = chrono::steady_clock::now();
     //     auto end = tn + fps_60(1);
