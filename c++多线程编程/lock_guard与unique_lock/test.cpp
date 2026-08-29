@@ -26,12 +26,12 @@ std::mutex mut2;//timed_mutex时间互斥锁
 void func2() {
     for (int i = 0;i < 1000000;i++) {
         // std::lock_guard<std::timed_mutex>lg(mut,std::adopt_lock)是默认构造时不加锁的状态
-        std::lock_guard<std::mutex>lg(mut2);//
+        std::lock_guard<std::mutex>lg(mut2);//默认构造时加锁状态
         data2++;
     }
     return;
 }
-
+//unique_lock和lock_guard在析构时都会自动解锁
 int main() {
     std::thread t1(func1);
     std::thread t2(func1);
