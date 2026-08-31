@@ -3,7 +3,7 @@
 #include<mutex>
 
 int a = 0;
-std::mutex m;
+static std::mutex m;
 void plus() {
     for (int i = 0;i < 1000000;i++) {
         //加入互斥锁，解决多线程数据共享问题

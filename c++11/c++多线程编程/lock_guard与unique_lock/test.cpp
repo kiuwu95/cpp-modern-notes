@@ -4,7 +4,7 @@
 #include<mutex>
 
 int data1 = 0;
-std::timed_mutex mut1;//timed_mutex时间互斥锁
+static std::timed_mutex mut1;//timed_mutex时间互斥锁
 void func1() {
     for (int i = 0;i < 2;i++) {
         //std::unique_lock <std::timed_mutex> ul(mut1)是默认构造时加锁的状态
@@ -22,7 +22,7 @@ void func1() {
 }
 
 int data2 = 0;
-std::mutex mut2;//timed_mutex时间互斥锁
+static std::mutex mut2;//timed_mutex时间互斥锁
 void func2() {
     for (int i = 0;i < 1000000;i++) {
         // std::lock_guard<std::timed_mutex>lg(mut,std::adopt_lock)是默认构造时不加锁的状态
