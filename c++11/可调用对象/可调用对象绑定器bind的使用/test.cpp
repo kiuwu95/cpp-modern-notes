@@ -32,7 +32,7 @@ int main() {
     cout << m4(6) << endl;
     //包装
     function<int(int, int)>f1 = bind(Minus, placeholders::_1, placeholders::_2);
-    cout << f1(3, 2) << endl;;
+    cout << f1(3, 2) << endl;
 
     test t1(114514);
     auto p1 = bind(&test::print, &t1, placeholders::_1, placeholders::_2);
