@@ -8,7 +8,9 @@ void test(int& a) {
 void test(int&& a) {
     cout << "右值的引用" << endl;
 }
-//forward须搭配万能模板引用，左值可保留左值特性，右值可保留右值特性。
+//对模板参数 T&&，C++ 有一条非常重要的规则：
+//如果传入的是左值，T 被推导为左值引用类型；
+//如果传入的是右值，T 被推导为值类型；
 template<typename T>
 void l_or_r(T&& num) {
     test(forward<T>(num));
