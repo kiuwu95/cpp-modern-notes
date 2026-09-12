@@ -1,0 +1,21 @@
+﻿所有标准的算术、比较和逻辑运算符在 C++14 中都增加了透明的 void 特化版本：
+
+功能	普通版本	透明版本 (C++14)
+算术运算		
+加法	std::plus	std::plus<>
+减法	std::minus	std::minus<>
+乘法	std::multiplies	std::multiplies<>
+除法	std::divides	std::divides<>
+取模	std::modulus	std::modulus<>
+取反	std::negate	std::negate<>
+比较运算		
+等于	std::equal_to	std::equal_to<>
+不等于	std::not_equal_to	std::not_equal_to<>
+大于	std::greater	std::greater<>
+小于	std::less	std::less<>
+大于等于	std::greater_equal	std::greater_equal<>
+小于等于	std::less_equal	std::less_equal<>
+逻辑运算		
+逻辑与	std::logical_and	std::logical_and<>
+逻辑或	std::logical_or	std::logical_or<>
+逻辑非	std::logical_not	std::logical_not<>
