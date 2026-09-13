@@ -30,6 +30,6 @@ auto& func6() {
 }//int&类型函数
 
 auto func7() {
-    const int* ptr = new int(2);//在堆区上被开辟，不会再栈区被释放
+    const int* ptr = new int(2);//在堆区上被开辟，不会在栈区被释放
     return ptr;
 }//const int*类型函数
