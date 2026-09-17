@@ -54,7 +54,7 @@ public:
         oos << tmstring << " " << lvstring << " " << msg;
         // 6.输出到控制台
         std::cout << oos.str() << std::endl;
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
         // 7.如果文件流有效，则写入文件
         if (m_outFile && m_outFile->is_open()) {
             *m_outFile << oos.str() << std::endl;
@@ -98,7 +98,8 @@ private:
 
         size_t cutPos = fmt.find("{}");
         while (cutPos != std::string::npos) {
-            oos << fmt.substr(pos, cutPos);
+            oos << fmt.substr(pos, cutPos - pos);
+
             if (vec_index < args_vec.size()) {
                 oos << args_vec[vec_index++];
             }
@@ -107,7 +108,8 @@ private:
             }
             cutPos += 2;
             pos = cutPos;
-            cutPos = fmt.find("{}", pos);
+
+            cutPos = fmt.find("{}", cutPos);
         }
         oos << fmt.substr(pos);
 
