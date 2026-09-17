@@ -7,7 +7,8 @@
 #include <string>
 #include <memory>
 #include <ctime>
-#include<chrono>
+#include <chrono>
+#include <string>
 
 // 日志等级
 enum class LogLevel
@@ -27,18 +28,22 @@ public:
     // 设置日志文件路径；传入空字符串关闭文件输出
     void setLogFile(const std::string& filePath);
 
-    // 设置日志过滤等级，低于该等级日志直接丢弃
-    void setLevel(LogLevel lv);
-
     // 格式化日志主接口，可变参数模板，必须用std::forward完美转发
     template<typename... Args>
     void log(LogLevel level, const char* fmt, Args&&... args) {
         // --------------------------
         // 【你在这里完成实现】
         // 1.等级过滤判断
+        if (level < m_filterLevel) {
+            return;
+        }
         // 2.加锁保护整条日志
+        std::unique_lock<std::mutex> lock(m_mtx);
         // 3.snprintf格式化消息
+
         // 4.获取时间字符串、等级字符串
+        std::string tmstring = getTimeString();
+        const char* lvstring = levelToString(level);
         // 5.拼接完整日志行
         // 6.输出到控制台
         // 7.如果文件流有效，则写入文件
