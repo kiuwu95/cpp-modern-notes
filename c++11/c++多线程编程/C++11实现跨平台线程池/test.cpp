@@ -9,6 +9,9 @@
 
 class ThreadPool {
 public:
+    ThreadPool(const ThreadPool&) = delete;
+    ThreadPool& operator=(const ThreadPool&) = delete;
+
     ThreadPool(int thread_num) {
         // for循环用于批量创建指定数量的工作线程
         // 循环结束后构造函数返回，但每个线程已经在自己的while(1)中独立运行
